@@ -1,5 +1,8 @@
 import { mergeState } from './merge-state.js'
 
+const API_ROOT = import.meta.env.BASE_URL === '/' ? '/api' : `${import.meta.env.BASE_URL}api`
+const apiUrl = (path) => `${API_ROOT}${path}`
+
 async function req(url, options) {
   const res = await fetch(url, options)
   const body = await res.json().catch(() => ({}))
@@ -14,7 +17,7 @@ const post = (url, payload) =>
     body: JSON.stringify(payload),
   })
 
-export const fetchThreads = () => req('/api/threads')
+export const fetchThreads = () => req(apiUrl('/threads'))
 
 /**
  * The colony file, and the base every later save is measured against.
@@ -35,7 +38,7 @@ function adoptBase(state, updatedAt) {
 }
 
 export const fetchState = async () => {
-  const state = await req('/api/state')
+  const state = await req(apiUrl('/state'))
   adoptBase(state)
   return state
 }
@@ -76,7 +79,7 @@ export async function saveState(state) {
 
   let local = state
   for (let attempt = 0; attempt < SAVE_TRIES; attempt++) {
-    const res = await fetch('/api/state', {
+    const res = await fetch(apiUrl('/state'), {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...local, baseUpdatedAt }),
@@ -105,9 +108,9 @@ export async function saveState(state) {
  * thread again, and the browser only ever passes it straight back. Nothing in the UI knows
  * what a Claude Code session id, or a Codex rollout id, actually looks like.
  */
-export const openThread = (thread, via) => post('/api/open', { harness: thread.harness, ref: thread.ref, via })
+export const openThread = (thread, via) => post(apiUrl('/open'), { harness: thread.harness, ref: thread.ref, via })
 
 /** A brand new thread in a repo, via that harness's own new-session deep link. */
-export const newSession = (folder, harness, via) => post('/api/new-session', { folder, harness, via })
+export const newSession = (folder, harness, via) => post(apiUrl('/new-session'), { folder, harness, via })
 
-export const revealFolder = (folder) => post('/api/reveal', { folder })
+export const revealFolder = (folder) => post(apiUrl('/reveal'), { folder })
