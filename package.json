@@ -1,18 +1,18 @@
 {
-  "name": "threadlands",
+  "name": "bot-ecosystem",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "A visual world for observing and managing coding-agent threads, one project at a time.",
   "license": "MIT",
-  "author": "Jarren Rocks",
-  "homepage": "https://botcrossing.com",
+  "author": "Guilherme Costa (derived from Bot Crossing by Jarren Rocks)",
+  "homepage": "https://github.com/Guilsc/bot-ecosystem",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jarrenrocks/bot-crossing.git"
+    "url": "git+https://github.com/Guilsc/bot-ecosystem.git"
   },
   "bugs": {
-    "url": "https://github.com/jarrenrocks/bot-crossing/issues"
+    "url": "https://github.com/Guilsc/bot-ecosystem/issues"
   },
   "keywords": [
     "claude-code",
