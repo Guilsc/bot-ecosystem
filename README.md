@@ -1,6 +1,10 @@
-# Bot Crossing — your agent threads, as a colony
+# Bot Ecosystem
 
-**[botcrossing.com](https://botcrossing.com)**
+A reusable visual world for observing and navigating coding-agent activity across projects and repositories.
+
+> **Origin & license:** Bot Ecosystem is an independent evolution derived from [Bot Crossing](https://github.com/Station-Sciences/bot-crossing), created by Jarren Rocks. The original code is distributed under the MIT License. The original license and applicable asset credits are preserved in this repository. This repository is maintained independently and is not an upstream contribution or official Bot Crossing distribution.
+
+## Original project documentation
 
 Every coding-agent thread on this machine is a little bot. They walk out of the ship, claim
 a plot for their repo, and build something. When one needs you it stops and holds a `?` over
